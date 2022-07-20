@@ -1,0 +1,2 @@
+# mmab
+Multiplayer multiarm bandits

@@ -22,16 +22,19 @@ def reward(mu, M, p, rng):
     --------
     reward: int
         Reward
+    noncollision: int
+        Returns 0 if no collision 1 otherwise
     """
-    if M == 0:
-        return 0
+
     X = rng.binomial(1, mu)
+    if M == 0:
+        return (0, 0)
     onlyone = rng.binomial(1, p, size=int(M))
     onlyone = np.sum(onlyone) == 1
     if onlyone:
-        return X
+        return (X, 1)
     else:
-        return 0
+        return (0, 0)
 
 
 def rewards(mu, n_players, p, rng):
@@ -54,9 +57,25 @@ def rewards(mu, n_players, p, rng):
     rewards: array of size K
         Rewards
 
+    collisions: array of size K
+        Collisions 0 if no collision 1 otherwise
+
     """
     K = len(mu)
     r = np.zeros(K)
+    c = np.zeros(K)
     for k in range(K):
-        r[k] = reward(mu[k], n_players[k], p, rng)
-    return r
+        r[k], c[k] = reward(mu[k], n_players[k], p, rng)
+    return r, c
+
+
+def sample_n_players(proba, rng):
+    M, K = proba.shape
+    n_players = np.zeros(K)
+
+    for i in range(M):
+        p = rng.rand()
+        cum = np.cumsum(proba[i])
+        n_players[np.argmax(p < cum)] += 1
+
+    return n_players

@@ -2,6 +2,7 @@
 # Code for centralized SARA
 
 import numpy as np
+from mmab.utils import n_players_to_proba
 
 
 def delta(t, K, T, M):
@@ -34,7 +35,7 @@ def argmax(f, K):
 class CSARA:
     """CSARA agent."""
 
-    def __init__(self, M, K, p, T):
+    def __init__(self, M, K, p, T, init="fair"):
         """Init parameters."""
         self.M = M
         self.K = K
@@ -44,17 +45,20 @@ class CSARA:
         self.mean_r_ = np.zeros(K)
         self.t_ = 1
         self.delta_ = None
-        n_players = np.zeros(K)
-        for k in range(K - 1):
-            n_players[k] = int(M / K)
-        n_players[K - 1] = M - int(M / K) * (K - 1)
+        if init == "fair":
+            n_players = np.zeros(K)
+            for k in range(K - 1):
+                n_players[k] = int(M / K)
+            n_players[K - 1] = M - int(M / K) * (K - 1)
+        else:
+            n_players = init
         self.n_players_ = n_players
 
     def play(self):
         """Play a round."""
-        return self.n_players_
+        return n_players_to_proba(self.n_players_)
 
-    def update(self, r):
+    def update(self, r, c):
         """Update parameters."""
         t = self.t_
         K = self.K

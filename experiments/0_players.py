@@ -39,6 +39,8 @@ def do_exp(seed):
             r, c = rewards(mu, n_players, p, rng)
             agent.update(r, c)
             rs.append(np.sum(r))
+            if t % 1000:
+                print(t, name, n_players)
         rss.append(rs)
     rss = np.array(rss)
     return rss

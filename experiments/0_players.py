@@ -13,7 +13,7 @@ M = 10  # Number of players
 K = 5  # Number of arms
 mu = np.array([0.01, 0.8, 0.3, 0.2, 0.5])  # Reward of each arm
 p = 0.3  # Probability that a player is active at each round
-T = 100000  # Number of rounds
+T = int(1e9)  # Number of rounds
 
 verbose = True
 
@@ -44,7 +44,7 @@ def do_exp(seed):
     return rss
 
 
-rss = Parallel(n_jobs=10, verbose=True)(delayed(do_exp)(seed) for seed in range(50))
+rss = Parallel(n_jobs=-1, verbose=True)(delayed(do_exp)(seed) for seed in range(50))
 rss = np.array(rss)
 rss = [np.cumsum(rss[seed, 0] - rss[seed], axis=1) for seed in range(50)]
 

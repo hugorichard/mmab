@@ -57,6 +57,7 @@ rss_median = np.median(rss, axis=0)
 rss_high = np.quantile(rss, 0.9, axis=0)
 rss_low = np.quantile(rss, 0.1, axis=0)
 
+# %%
 
 cm = plt.cm.Set1
 COLORS = {
@@ -69,7 +70,7 @@ COLORS = {
     "Greedy": cm(7),
 }
 
-plt.figure(figsize=(5, 4))
+plt.figure(figsize=(7, 4))
 for i, name in enumerate(names):
     if i == 0:
         continue

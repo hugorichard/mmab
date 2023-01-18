@@ -2,7 +2,12 @@
 # Environment to play the multiplayer bandit game
 
 import numpy as np
+from mmab.utils import g
 
+
+def deterministic_reward(mu, M, p):
+    """Give the mean reward"""
+    return g(M, p).dot(mu)
 
 def reward(mu, M, p, rng):
     """Sample a reward.

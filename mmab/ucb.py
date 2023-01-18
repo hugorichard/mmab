@@ -84,6 +84,7 @@ class UCB:
 
         upper_bounds = np.minimum(mean_r + delta(n_noncollisions, T), 1)
         self.n_players_ = arm_assignment(upper_bounds, M, p)
+        # print(self.t_, "UCB", upper_bounds, self.n_players_)
         self.t_ = self.t_ + 1
         self.r_sum_ = r_sum
         self.n_noncollisions_ = n_noncollisions

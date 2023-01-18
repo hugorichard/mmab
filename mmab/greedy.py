@@ -9,10 +9,8 @@ class Greedy:
     """Greedy agent."""
 
     def __init__(self, M, K, p, T, verbose=False):
-        """UCB Agent takes at each time step the optimal configuration according to reward upper bounds
-
-        UCB Agent computes an upper bound and take the optimal configuration
-        according to this upper bound
+        """Greedy finds the optimal assignment thanks to estimated means but constrains
+        certain arms to have at least one player for exploration purposes.
 
         Parameters
         ----------
@@ -89,13 +87,6 @@ class Greedy:
         I = np.argsort(upper_bounds)
         i = 0
 
-        if self.verbose:
-            if self.t_ % 100 == 0:
-                print("upper", upper_bounds, M_H)
-                print("lower", lower_bounds, M_L)
-                print("delta", delta(n_noncollisions, T))
-                print(g(M_L, p).dot(lower_bounds), g(M_H, p).dot(upper_bounds))
-
         while g(M_L, p).dot(lower_bounds) > g(M_H, p).dot(upper_bounds):
             init[I[i]] = 0
             M_L = arm_assignment(lower_bounds, M, p)
@@ -103,6 +94,7 @@ class Greedy:
             i += 1
 
         self.n_players_ = arm_assignment(mean_r, M, p, init=init)
+        # print(self.t_, "Greedy", mean_r, init, self.n_players_)
         self.t_ = self.t_ + 1
         self.r_sum_ = r_sum
         self.n_noncollisions_ = n_noncollisions

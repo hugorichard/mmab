@@ -38,7 +38,7 @@ def arm_assignment(rewards, M, p, init=None):
     if init is None:
         init = np.zeros(K)
     mu = rewards
-    n_players = init
+    n_players = np.copy(init)
     z = np.array([(1 - p) ** init[k] for k in range(K)])
     l = np.array([p / (1 - p) * init[k] for k in range(K)])
     M_remaining = M - np.sum(init)

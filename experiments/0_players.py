@@ -1,28 +1,27 @@
 from mmab.csara import CSARA
 from mmab.ucb import UCB, delta
-from mmab.naive import Naive, Uniform
+from mmab.opt import OPT
 from mmab.greedy import Greedy
 from mmab.etc import ETC
-from mmab.environment import rewards, sample_n_players
+from mmab.environment import rewards, deterministic_reward, sample_n_players
 import numpy as np
 import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 
 
-M = 10  # Number of players
-K = 5  # Number of arms
-mu = np.array([0.01, 0.8, 0.3, 0.2, 0.5])  # Reward of each arm
-p = 0.3  # Probability that a player is active at each round
-T = int(1e6)  # Number of rounds
+M = 30  # Number of players
+mu = np.array([0.8, 0.5])  # Reward of each arm
+K = len(mu)  # Number of arms
+p = 0.01  # Probability that a player is active at each round
+T = int(1e5)  # Number of rounds
 
 verbose = True
 
 names_agents = [
-    ("3 on the best arm", Naive(np.array([0, 3, 2, 2, 3]))),
-    ("ETC", ETC(M, K, p, T)),
-    # # ("CSARA", CSARA(M, K, p, T, init="fair")),
-    ("UCB", UCB(M, K, p, T)),
-    ("Greedy", Greedy(M, K, p, T)),
+    ("OPT", OPT(M, K, p, T, mu,)),
+    # ("ETC", ETC(M, K, p, T)),
+    ("UCB", UCB(M, K, p, T, verbose=True)),
+    ("Greedy", Greedy(M, K, p, T, verbose=True)),
 ]
 agents = [names_agents[i][1] for i in range(len(names_agents))]
 names = [names_agents[i][0] for i in range(len(names_agents))]
@@ -36,18 +35,22 @@ def do_exp(seed):
         for t in range(T):
             proba = agent.play()
             n_players = sample_n_players(proba, rng)
+            d_rewards = deterministic_reward(mu, n_players, p)
             r, c = rewards(mu, n_players, p, rng)
             agent.update(r, c)
-            rs.append(np.sum(r))
-            if t % 10000 == 0:
+            rs.append(np.sum(d_rewards))
+            if t == 0 and name == "OPT":
+                print(t, name, n_players)
+            if t % T-1 == 0 :
                 print(t, name, n_players)
         rss.append(rs)
     rss = np.array(rss)
     return rss
 
-rss = Parallel(n_jobs=-1, verbose=True)(delayed(do_exp)(seed) for seed in range(50))
+seeds = 50
+rss = Parallel(n_jobs=-1, verbose=True)(delayed(do_exp)(seed) for seed in range(seeds))
 rss = np.array(rss)
-rss = [np.cumsum(rss[seed, 0] - rss[seed], axis=1) for seed in range(50)]
+rss = [np.cumsum(rss[seed, 0] - rss[seed], axis=1) for seed in range(seeds)]
 
 rss_median = np.median(rss, axis=0)
 rss_high = np.quantile(rss, 0.9, axis=0)
@@ -76,7 +79,7 @@ for i, name in enumerate(names):
         color=COLORS[name],
     )
     plt.fill_between(
-        np.arange(T), rss_high[i], rss_low[i], color=COLORS[name], alpha=0.3
+        np.arange(T), rss_high[i], rss_low[i], color=COLORS[name], alpha=0.05
     )
 plt.ylabel("Regret")
 plt.xlabel("Time $t$")

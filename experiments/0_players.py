@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 
 
-M = 30  # Number of players
-mu = np.array([0.8, 0.5])  # Reward of each arm
+M = 25  # Number of players
+mu = np.array([0.8, 0.3])  # Reward of each arm
 K = len(mu)  # Number of arms
 p = 0.05  # Probability that a player is active at each round
 T = int(1e5)  # Number of rounds

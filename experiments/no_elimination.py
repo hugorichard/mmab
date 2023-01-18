@@ -19,7 +19,7 @@ verbose = True
 
 names_agents = [
     ("OPT", OPT(M, K, p, T, mu,)),
-    # ("ETC", ETC(M, K, p, T)),
+    ("ETC", ETC(M, K, p, T)),
     ("UCB", UCB(M, K, p, T, verbose=True)),
     ("Greedy", Greedy(M, K, p, T, verbose=True)),
 ]

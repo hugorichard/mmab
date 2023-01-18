@@ -84,4 +84,4 @@ for i, name in enumerate(names):
 plt.ylabel("Regret")
 plt.xlabel("Time $t$")
 plt.legend()
-plt.savefig("../figures/0_players.pdf", bbox_inches="tight")
+plt.savefig("../figures/no_elimination.pdf", bbox_inches="tight")

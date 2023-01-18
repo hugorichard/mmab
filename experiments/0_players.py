@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 
 
-M = 7  # Number of players
+M = 3  # Number of players
 mu = np.array([0.99, 0.01])  # Reward of each arm
 K = len(mu)  # Number of arms
 p = 0.1  # Probability that a player is active at each round

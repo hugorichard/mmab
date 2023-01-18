@@ -10,10 +10,10 @@ from joblib import Parallel, delayed
 
 
 M = 30  # Number of players
-mu = np.array([0.8, 0.1])  # Reward of each arm
+mu = np.array([0.9, 0.1])  # Reward of each arm
 K = len(mu)  # Number of arms
-p = 0.01  # Probability that a player is active at each round
-T = int(1e6)  # Number of rounds
+p = 0.05  # Probability that a player is active at each round
+T = int(1e4)  # Number of rounds
 
 verbose = True
 
@@ -84,4 +84,4 @@ for i, name in enumerate(names):
 plt.ylabel("Regret")
 plt.xlabel("Time $t$")
 plt.legend()
-plt.savefig("../figures/no_elimination.pdf", bbox_inches="tight")
+plt.savefig("../figures/0_players.pdf", bbox_inches="tight")

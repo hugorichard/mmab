@@ -9,11 +9,11 @@ import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 
 
-M = 25  # Number of players
-mu = np.array([0.8, 0.3])  # Reward of each arm
+M = 30  # Number of players
+mu = np.array([0.8, 0.5])  # Reward of each arm
 K = len(mu)  # Number of arms
-p = 0.05  # Probability that a player is active at each round
-T = int(1e5)  # Number of rounds
+p = 0.01  # Probability that a player is active at each round
+T = int(1e2)  # Number of rounds
 
 verbose = True
 
@@ -41,7 +41,7 @@ def do_exp(seed):
             rs.append(np.sum(d_rewards))
             if t == 0 and name == "OPT":
                 print(t, name, n_players)
-            if t % T-1 == 0 :
+            if t % (T-1) == 0 :
                 print(t, name, n_players)
         rss.append(rs)
     rss = np.array(rss)

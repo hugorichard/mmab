@@ -59,33 +59,3 @@ rss_low = np.quantile(rss, 0.1, axis=0)
 np.save("../data/0_players_rss_median", rss_median)
 np.save("../data/0_players_rss_high", rss_high)
 np.save("../data/0_players_rss_low", rss_low)
-
-
-cm = plt.cm.Set1
-COLORS = {
-    "ETC": cm(2),
-    "CSARA": cm(3),
-    "4 on the best arm": cm(1),
-    "3 on the worse arm": cm(0),
-    "Uniform": cm(4),
-    "UCB": cm(6),
-    "Greedy": cm(7),
-}
-
-plt.figure(figsize=(5, 4))
-for i, name in enumerate(names):
-    if i == 0:
-        continue
-    plt.plot(
-        np.arange(T),
-        rss_median[i],
-        label=name,
-        color=COLORS[name],
-    )
-    plt.fill_between(
-        np.arange(T), rss_high[i], rss_low[i], color=COLORS[name], alpha=0.05
-    )
-plt.ylabel("Regret")
-plt.xlabel("Time $t$")
-plt.legend()
-plt.savefig("../figures/0_players.pdf", bbox_inches="tight")

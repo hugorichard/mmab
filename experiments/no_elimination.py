@@ -13,7 +13,7 @@ M = 30  # Number of players
 mu = np.array([0.8, 0.5])  # Reward of each arm
 K = len(mu)  # Number of arms
 p = 0.01  # Probability that a player is active at each round
-T = int(1e2)  # Number of rounds
+T = int(1e6)  # Number of rounds
 
 verbose = True
 

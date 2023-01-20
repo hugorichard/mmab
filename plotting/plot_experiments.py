@@ -35,7 +35,7 @@ for experiment in experiments:
     }
 
     I = np.arange(T, step=10)
-    plt.figure(figsize=(5, 3))
+    plt.figure(figsize=(5, 2))
     for i, name in enumerate(names):
         if i == 0:
             continue

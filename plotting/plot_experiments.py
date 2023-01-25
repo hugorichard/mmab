@@ -16,10 +16,10 @@ rc = {
 }
 plt.rcParams.update(rc)
 
-for experiment in experiments:
-    rss_median = np.load("../data/" + experiment + "_rss_median.npy")
-    rss_high = np.load("../data/" + experiment + "_rss_high.npy")
-    rss_low = np.load("../data/" + experiment + "_rss_low.npy")
+for exp_no, experiment in enumerate(experiments):
+    rss_median = np.load("../data/" + experiment + "_rss_median.npy")[:, :10000]
+    rss_high = np.load("../data/" + experiment + "_rss_high.npy")[:, :10000]
+    rss_low = np.load("../data/" + experiment + "_rss_low.npy")[:, :10000]
 
     _, T = rss_median.shape
 
@@ -46,9 +46,10 @@ for experiment in experiments:
             color=COLORS[name],
         )
         plt.fill_between(
-            np.arange(T)[I], rss_high[i][I], rss_low[i][I], color=COLORS[name], alpha=0.3
+            np.arange(T)[I], rss_high[i][I], rss_low[i][I], color=COLORS[name], alpha=0.3,
         )
     plt.ylabel("Cumulated Regret")
     plt.xlabel("Timestep $t$")
-    plt.legend()
+    if exp_no == 0:
+        plt.legend(bbox_to_anchor=(1, 1.5), ncols=3)
     plt.savefig("../figures/" + experiment + ".pdf", bbox_inches="tight")

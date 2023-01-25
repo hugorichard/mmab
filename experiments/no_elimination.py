@@ -13,7 +13,7 @@ M = 30  # Number of players
 mu = np.array([0.8, 0.5])  # Reward of each arm
 K = len(mu)  # Number of arms
 p = 0.01  # Probability that a player is active at each round
-T = int(1e6)  # Number of rounds
+T = int(1e4)  # Number of rounds
 
 verbose = True
 
@@ -56,6 +56,6 @@ rss_median = np.median(rss, axis=0)
 rss_high = np.quantile(rss, 0.9, axis=0)
 rss_low = np.quantile(rss, 0.1, axis=0)
 
-np.save("../data/no_elimination_rss_median", rss_median)
-np.save("../data/no_elimination_rss_high", rss_high)
-np.save("../data/no_elimination_rss_low", rss_low)
+np.save("../data/no_elimination_rss_medianT1e4", rss_median)
+np.save("../data/no_elimination_rss_highT1e4", rss_high)
+np.save("../data/no_elimination_rss_lowT1e4", rss_low)

@@ -56,6 +56,7 @@ rss_median = np.median(rss, axis=0)
 rss_high = np.quantile(rss, 0.9, axis=0)
 rss_low = np.quantile(rss, 0.1, axis=0)
 
+np.save("../data/no_elimination_rssT1e4", rss)
 np.save("../data/no_elimination_rss_medianT1e4", rss_median)
 np.save("../data/no_elimination_rss_highT1e4", rss_high)
 np.save("../data/no_elimination_rss_lowT1e4", rss_low)

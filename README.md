@@ -54,7 +54,7 @@ Move into the `figure` directory to see the reproduced figure:
 
 ![Figure 1 (left) ](./figures/0_players.png)
 
-![Figure 1 (right) ](./figures/no_players.png)
+![Figure 1 (right) ](./figures/no_elimination.png)
 
 
 

@@ -1,17 +1,17 @@
 # mmab
 Multiplayer multiarm bandits
 
-# Install
+## Install
 All commands are to be run from the unzipped directory unless specified otherwise.
 
-## Create virtual environment
+### Create virtual environment
 ``` python
 conda create --name mmab pip
 conda activate mmab
 ```
 
-## Requirements
-``` python
+### Requirements
+``` bash
 pip install -r requirements.txt
 ```
 
@@ -25,33 +25,37 @@ For plotting and running experiments
 For running tests
 * pytest
 
-## Install MMAB
-``` python
+### Install MMAB
+``` bash
 pip install -e .
 ```
 
 Run tests
-``` python
+``` bash
 pytest
 ```
 
 
 ## Experiments
 
-### Reproducing Figure 1: Benchmark of ETC, UCB and Cautious Cautious Greedy on synthetic data with $\nu^* = 0$ (left) and $\nu^* = 1$ (right) 
+### Reproducing Figure 1: Benchmark of ETC, UCB and Cautious Greedy on synthetic data with $\nu^* = 0$ (left) and $\nu^* = 1$ (right) 
 
-Move into the `experiments` directory
+Move into the `experiments` directory and run the benchmark:
 
-`cd experiments`
+`python 0_players.py` (Data with $\nu^* = 0$, computation time: 22 seconds)
 
-Run the benchmark
+`python no_elimination.py` (Data with $\nu^* = 1$, computation time: 1 minute and 24 seconds) 
 
-`python 0_players.py` (Computation time: 22 seconds)
+Move into the `plotting` directory and plot the data:
 
-`python 0_players.py` (22 seconds)
+`python plot_experiments.py` (Computation time: 1 second )
 
-Go back to the root directory `cd ..`, move into the plotting directory 
+Move into the `figure` directory to see the reproduced figure:
 
-`cd plotting`
+![Figure 1 (left) ](./figures/0_players.png)
 
-and plot the data
+![Figure 1 (right) ](./figures/no_players.png)
+
+
+
+

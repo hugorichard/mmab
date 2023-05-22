@@ -23,7 +23,7 @@ def test_utility():
     rng = np.random.RandomState(0)
     rs = []
     for _ in range(20000):
-        r = rewards(mu, n_players, p, rng)
+        r, _ = rewards(mu, n_players, p, rng)
         rs.append(r)
     means = np.mean(rs, axis=0)
     np.testing.assert_array_almost_equal(means, utilities(mu, n_players, p), 2)

@@ -51,6 +51,7 @@ plt.ylabel("Cumulative Regret")
 plt.xlabel("Timestep $t$")
 plt.legend(bbox_to_anchor=(1, 1.5), ncols=3)
 plt.savefig("../figures/" + experiment + ".pdf", bbox_inches="tight")
+plt.savefig("../figures/" + experiment + ".png", bbox_inches="tight")
 
 
 experiment = "0_players"
@@ -78,6 +79,7 @@ plt.ylabel("Cumulative Regret")
 plt.xlabel("Timestep $t$")
 # plt.legend(bbox_to_anchor=(1, 1.5), ncols=3)
 plt.savefig("../figures/" + experiment + ".pdf", bbox_inches="tight")
+plt.savefig("../figures/" + experiment + ".png", bbox_inches="tight")
 
 
 

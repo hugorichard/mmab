@@ -49,7 +49,7 @@ for i, name in enumerate(names):
     )
 plt.ylabel("Cumulative Regret")
 plt.xlabel("Timestep $t$")
-plt.legend(bbox_to_anchor=(1, 1.5), ncols=3)
+plt.legend(bbox_to_anchor=(1, 1.5), ncol=3)
 plt.savefig("../figures/" + experiment + ".pdf", bbox_inches="tight")
 plt.savefig("../figures/" + experiment + ".png", bbox_inches="tight")
 
@@ -77,7 +77,7 @@ for i, name in enumerate(names):
     )
 plt.ylabel("Cumulative Regret")
 plt.xlabel("Timestep $t$")
-# plt.legend(bbox_to_anchor=(1, 1.5), ncols=3)
+# plt.legend(bbox_to_anchor=(1, 1.5), ncol=3)
 plt.savefig("../figures/" + experiment + ".pdf", bbox_inches="tight")
 plt.savefig("../figures/" + experiment + ".png", bbox_inches="tight")
 

@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-names = ["OPT", "ETC", "UCB", "Greedy"]
+names = ["OPT", "UCB", "Greedy"]
 
 
 rc = {

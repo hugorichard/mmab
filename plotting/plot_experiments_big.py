@@ -27,10 +27,10 @@ COLORS = {
     "Greedy": cm(7),
 }
 
-experiment =  "no_elimination"
-rss_median = np.load("../data/" + experiment + "_rss_medianT1e4.npy")[:, :]
-rss_high = np.load("../data/" + experiment + "_rss_highT1e4.npy")[:, :]
-rss_low = np.load("../data/" + experiment + "_rss_lowT1e4.npy")[:, :]
+experiment =  "no_elimination_big"
+rss_median = np.load("../data/" + experiment + "_rss_median.npy")[:, :]
+rss_high = np.load("../data/" + experiment + "_rss_high.npy")[:, :]
+rss_low = np.load("../data/" + experiment + "_rss_low.npy")[:, :]
 
 _, T = rss_median.shape
 I = np.arange(T, step=10)
@@ -54,7 +54,7 @@ plt.savefig("../figures/" + experiment + ".pdf", bbox_inches="tight")
 plt.savefig("../figures/" + experiment + ".png", bbox_inches="tight")
 
 
-experiment = "0_players"
+experiment = "0_players_big"
 rss_median = np.load("../data/" + experiment + "_rss_median.npy")[:, :]
 rss_high = np.load("../data/" + experiment + "_rss_high.npy")[:, :]
 rss_low = np.load("../data/" + experiment + "_rss_low.npy")[:, :]

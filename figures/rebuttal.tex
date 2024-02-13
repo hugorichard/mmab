@@ -1,0 +1,117 @@
+\documentclass{article}
+
+
+ %if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading ewrl_2023
+
+
+% ready for submission
+\usepackage{natbib}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+% to compile a preprint version
+% \usepackage[preprint]{ewrl_2023}
+
+% to compile a camera-ready version
+% \usepackage[final]{ewrl_2023}
+
+
+% to avoid loading the natbib package
+% \usepackage[nonatbib]{ewrl_2023}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage[textsize=tiny]{todonotes}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+
+\renewcommand{\algorithmiccomment}[1]{\bgroup\hfill//~#1\egroup}
+\newcommand{\addref}{{\color{red}(reference needed)}}
+\newcommand{\hr}[1]{{\color{red} Hugo: #1}}
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2022} with \usepackage[nohyperref]{icml2022} above.
+
+% Attempt to make hyperref and algorithmic work together better:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+\newcommand{\UCB}{\operatorname{UCB}}
+\newcommand{\MMAB}{\operatorname{MMAB}}
+\newcommand{\support}{\operatorname{support}}
+
+\usepackage{authblk}
+
+% Todonotes is useful during development; simply uncomment the next line
+%    and comment out the line below the next line to turn off comments
+%\usepackage[disable,textsize=tiny]{todonotes}
+
+
+
+\title{A new figure to illustrate our answer to Reviewer tETx}
+
+\author{}
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+% \author[1, 3]{Hugo Richard}
+% \author[2]{Etienne Boursier}
+% \author[1, 3]{Vianney Perchet}
+% \affil[1]{ENSAE, Crest, France}
+% \affil[2]{INRIA, Université Paris Saclay, LMO, Orsay, France}
+% \affil[3]{Criteo AI Labs, France}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.4\textwidth]{no_eliminationT1e6.pdf}
+    \includegraphics[width=.4\textwidth]{0_playersT1e6.pdf}
+    \caption{\textbf{Benchmark of ETC, UCB and Cautious Cautious Greedy on synthetic data} with $T=10^6$ (in the paper we had $T=10^4$) \textit{(left)} $\nu^* = 0$ \textit{(right)} $\nu^* = 1$ }
+    \vspace{-1em}
+    \label{fig:all}
+  \end{figure}
+
+\end{document}

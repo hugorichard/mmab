@@ -1,7 +1,6 @@
 from mmab.cautious_greedy import CautiousGreedy
-from mmab.ucb import UCB, delta
+from mmab.ucb import UCB
 from mmab.opt import OPT
-from mmab.greedy import Greedy
 from mmab.etc import ETC
 from mmab.environment import rewards, deterministic_reward, sample_n_players
 import numpy as np

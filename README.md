@@ -42,20 +42,15 @@ pytest
 
 Move into the `experiments` directory and run the benchmark:
 
-`python 0_players.py` (Data with $\nu^* = 0$, computation time: 22 seconds)
+`python experiment_aistats2024.py`
 
-`python no_elimination.py` (Data with $\nu^* = 1$, computation time: 1 minute and 24 seconds) 
+The pdf is then available in the `figure` directory under the name "figure1.pdf"
 
-Move into the `plotting` directory and plot the data:
+### Reproducing Figure 2: same experiment as Figure 1 with larger range of values for the horizon $T$
 
-`python plot_experiments.py` (Computation time: 1 second )
+Move into the `experiments` directory and run the benchmark:
 
-Move into the `figure` directory to see the reproduced figure:
+`python rebuttal.py`
 
-![Figure 1 (left) ](./figures/0_players.png)
-
-![Figure 1 (right) ](./figures/no_elimination.png)
-
-
-
+The pdf is then available in the `figure` directory under the name "figure1_rebuttal.pdf"
 

@@ -1,7 +1,6 @@
 from mmab.cautious_greedy import CautiousGreedy
-from mmab.ucb import UCB, delta
+from mmab.ucb import UCB
 from mmab.opt import OPT
-from mmab.greedy import Greedy
 from mmab.etc import ETC
 from mmab.environment import rewards, deterministic_reward, sample_n_players
 import numpy as np
@@ -15,7 +14,7 @@ H = np.arange(40) * 30
 seeds = 50
 
 def plot1():
-    M = 30  # Number of players
+    M = 30  # Number of playe
     mu = np.array([0.8, 0.5])  # Reward of each arm
     K = len(mu)  # Number of arms
     p = 0.01  # Probability that a player is active at each round
